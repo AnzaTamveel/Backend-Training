@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store List and Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .store-list, .store-detail {
+            margin-bottom: 30px;
+        }
+        .store-list ul, .store-detail ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .store-list li, .store-detail li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .detail-section {
+            display: {% if store %}block{% else %}none{% endif %};
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Store List Section -->
+        <div class="store-list">
+            <h1>Stores</h1>
+            <ul>
+                {% for store in stores %}
+                    <li>
+                        <a href="?store_id={{ store.id }}">{{ store.name }}</a>
+                    </li>
+                {% empty %}
+                    <li>No stores available.</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Store Detail Section -->
+        <div class="store-detail detail-section">
+            {% if store %}
+                <h2>{{ store.name }}</h2>
+                <p><strong>Books Available:</strong></p>
+                <ul>
+                    {% for stock in store.stock_set.all %}
+                        <li>{{ stock.book.title }} ({{ stock.stock }} copies)</li>
+                    {% empty %}
+                        <li>No books available in this store.</li>
+                    {% endfor %}
+                </ul>
+                <p><a href="?">Back to Store List</a></p>
+            {% else %}
+                <p>Select a store from the list to see details.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

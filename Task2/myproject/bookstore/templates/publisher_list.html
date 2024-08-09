@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Publisher List and Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .publisher-list, .publisher-detail {
+            margin-bottom: 30px;
+        }
+        .publisher-list ul, .publisher-detail ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .publisher-list li, .publisher-detail li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Publisher List Section -->
+        <div class="publisher-list">
+            <h1>Publishers</h1>
+            <ul>
+                {% for publisher in publishers %}
+                    <li>
+                        Publisher Name: 
+                        <a href="?publisher_id={{ publisher.id }}">{{ publisher.name }}</a>
+                        City:
+                        <a href="?publisher_id={{ publisher.id }}">{{ publisher.city }}</a>
+                    </li>
+                {% empty %}
+                    <li>No publishers available.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
