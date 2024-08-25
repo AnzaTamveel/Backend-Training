@@ -1,23 +1,16 @@
 from django.shortcuts import render, redirect
 from .forms import CreateUserForm, LoginForm, CreateRecordForm, UpdateRecordForm
-
 from django.contrib.auth.models import auth
 from django.contrib.auth import authenticate
-
 from django.contrib.auth.decorators import login_required
-
 from .models import Record
-
 from django.contrib import messages
 
-# - Homepage
+# Create your views here.
 
 def home(request):
 
-    return render(request, 'webapp/index.html')
-
-
-# - Register a user
+    return render(request, 'index.html')
 
 def register(request):
 
@@ -37,10 +30,8 @@ def register(request):
 
     context = {'form': form}
 
-    return render(request, 'webapp/register.html', context=context)
+    return render(request, 'register.html', context=context)
 
-
-# - Login a user
 
 def my_login(request):
 
@@ -65,10 +56,8 @@ def my_login(request):
 
     context = {'form': form}
 
-    return render(request, 'webapp/my-login.html', context=context)
+    return render(request, 'my-login.html', context=context)
 
-
-# - Dashboard
 
 @login_required(login_url='my-login')
 def dashboard(request):
@@ -77,10 +66,7 @@ def dashboard(request):
 
     context = {'records': my_records}
 
-    return render(request, 'webapp/dashboard.html', context=context)
-
-
-# - Create a record
+    return render(request, 'dashboard.html', context=context)
 
 @login_required(login_url='my-login')
 def create_record(request):
@@ -101,7 +87,7 @@ def create_record(request):
 
     context = {'form': form}
 
-    return render(request, 'webapp/create-record.html', context=context)
+    return render(request, 'create-record.html', context=context)
 
 
 # - Update a record
@@ -126,10 +112,7 @@ def update_record(request, pk):
 
     context = {'form': form}
 
-    return render(request, 'webapp/update-record.html', context=context)
-
-
-# - Read / View a singular record
+    return render(request, 'update-record.html', context=context)
 
 @login_required(login_url='my-login')
 def singular_record(request, pk):
@@ -138,10 +121,7 @@ def singular_record(request, pk):
 
     context = {'record': all_records}
 
-    return render(request, 'webapp/view-record.html', context=context)
-
-
-# - Delete a record
+    return render(request, 'view-record.html', context=context)
 
 @login_required(login_url='my-login')
 def delete_record(request, pk):
@@ -150,16 +130,14 @@ def delete_record(request, pk):
 
     record.delete()
 
-    messages.success(request, "Your record was deleted!")
+    messages.success(request, "Your record was Deleted!")
 
     return redirect("dashboard")
-
-# - User logout
 
 def user_logout(request):
 
     auth.logout(request)
 
-    messages.success(request, "Logout success!")
+    messages.success(request, "Logout Success!")
 
     return redirect("my-login")
