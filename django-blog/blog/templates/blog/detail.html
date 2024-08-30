@@ -1,39 +1,41 @@
 {% extends "base.html" %}
 
 {% block page_title %}
-    <h2>{{ post.title }}</h2>
+    <h2 class="text-2xl font-bold mb-4">{{ post.title }}</h2>
 {% endblock page_title %}
 
 {% block page_content %}
-    <small>
+    <small class="text-gray-600">
         {{ post.created_on.date }} | Categories:
         {% for category in post.categories.all %}
-            <a href="{% url 'blog_category' category.name %}">
+            <a href="{% url 'blog_category' category.name %}" class="text-blue-500 hover:underline">
                 {{ category.name }}
             </a>
         {% endfor %}
     </small>
-    <p>{{ post.body | linebreaks }}</p>
+    <p class="mt-4 text-gray-800">{{ post.body | linebreaks }}</p>
     
-    <h3>Leave a comment:</h3>
-    <form method="post">
+    <h3 class="text-lg font-semibold mt-6 mb-4">Leave a comment:</h3>
+    <form method="post" class="space-y-4">
         {% csrf_token %}
         <div>
-            {{ form.author }}
+            <label for="{{ form.author.id_for_label }}" class="block text-sm font-medium text-gray-700">Author</label>
+            <input id="{{ form.author.id_for_label }}" name="{{ form.author.html_name }}" type="{{ form.author.field.widget.input_type }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" value="{{ form.author.value|default_if_none:'' }}">
         </div>
         <div>
-            {{ form.body }}
+            <label for="{{ form.body.id_for_label }}" class="block text-sm font-medium text-gray-700">Comment</label>
+            <textarea id="{{ form.body.id_for_label }}" name="{{ form.body.html_name }}" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50">{{ form.body.value|default_if_none:'' }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="mt-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Submit</button>
     </form>
 
-    <h3>Comments:</h3>
+    <h3 class="text-lg font-semibold mt-6 mb-4">Comments:</h3>
     {% for comment in comments %}
-        <p>
-            On {{ comment.created_on.date }} <b>{{ comment.author }}</b> wrote:
-        </p>
-        <p>
-            {{ comment.body | linebreaks }}
-        </p>
-        {% endfor %}
+        <div class="border-t border-gray-200 pt-4 mt-4">
+            <p class="text-gray-600 text-sm">
+                On {{ comment.created_on.date }} <b class="font-semibold">{{ comment.author }}</b> wrote:
+            </p>
+            <p class="mt-2 text-gray-800">{{ comment.body | linebreaks }}</p>
+        </div>
+    {% endfor %}
 {% endblock page_content %}
