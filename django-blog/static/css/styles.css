@@ -1,612 +1,408 @@
-/* Tailwind directives */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-/*
-! tailwindcss v3.4.10 | MIT License | https://tailwindcss.com
-*/
-
-/*
-1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
-2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
-*/
-
-
-*,
-::before,
-::after {
-  box-sizing: border-box;
-  /* 1 */
-  border-width: 0;
-  /* 2 */
-  border-style: solid;
-  /* 2 */
-  border-color: #e5e7eb;
-  /* 2 */
-}
-
-::before,
-::after {
-  --tw-content: '';
-}
-
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-5. Use the user's configured `sans` font-feature-settings by default.
-6. Use the user's configured `sans` font-variation-settings by default.
-7. Disable tap highlights on iOS
-*/
-
-html,
-:host {
-  line-height: 1.5;
-  /* 1 */
-  -webkit-text-size-adjust: 100%;
-  /* 2 */
-  -moz-tab-size: 4;
-  /* 3 */
-  -o-tab-size: 4;
-     tab-size: 4;
-  /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  /* 4 */
-  font-feature-settings: normal;
-  /* 5 */
-  font-variation-settings: normal;
-  /* 6 */
-  -webkit-tap-highlight-color: transparent;
-  /* 7 */
-}
-
-/*
-1. Remove the margin in all browsers.
-2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-*/
-
 body {
-  margin: 0;
-  /* 1 */
-  line-height: inherit;
-  /* 2 */
+    font-family: 'Times New Roman';
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+header {
+    display: flex;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    font-family: 'Times New Roman';
+
 }
 
-/*
-1. Add the correct height in Firefox.
-2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-3. Ensure horizontal rules are visible by default.
-*/
+.logo h1 {
+    margin: 0;                     
+    font-size: 2em;
+    font-weight: normal;
+    white-space: nowrap;   
+}
+nav {
+    &.primary-navigation {
+      margin: 0 auto;
+      display: block;
+      padding: 20px 0px 0 0;  
+      text-align: center;
+      font-size: 16px;
+  
+      ul li {
+        list-style: none;
+        margin: 0 auto;
+        border-left: 2px solid #3ca0e7;
+        display: inline-block;
+        padding: 0 30px;
+        position: relative;
+        text-decoration: none;
+        text-align: center;
+        font-family: 'Times New Roman';
+
+      }
+  
+      li a {
+        color: rgb(250, 250, 250);
+      }
+  
+      li a:hover {
+        color: #3ca0e7;
+      }
+  
+      li:hover {
+        cursor: pointer;
+      }
+  
+      ul li ul {
+        visibility: hidden;
+        opacity: 0;
+        position: absolute;
+        padding-left: 0;
+        left: 0;
+        display: none;
+        background: white;
+      }
+  
+      ul li:hover > ul,
+      ul li ul:hover {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+        z-index: 1;
+        min-width: 250px;
+        text-align: left;
+        padding-top: 20px;
+        box-shadow: 0px 3px 5px -1px #ccc;
+      }
+      ul li ul li a {
+        color: black; 
+      }
+      ul li ul li {
+        clear: both;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 20px;
+        border-style: none;
+      }
+  
+      ul li ul li a:hover {
+        padding-left: 10px;
+        border-left: 2px solid #3ca0e7;
+        transition: all 0.3s ease;
+      }
+    }
+  }
+  
+  a {
+  
+      text-decoration: none;
+  
+      &:hover {
+          color: #3CA0E7;
+      }
+   
+  }
+  
+   ul li ul li a { transition: all 0.5s ease; }
+ 
+main {
+    background: #fff;
+    font-family: 'Times New Roman';
+
+    margin: 20px auto;
+}
 
 hr {
-  height: 0;
-  /* 1 */
-  color: inherit;
-  /* 2 */
-  border-top-width: 1px;
-  /* 3 */
+    border: 0;
+    
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
 }
 
-/*
-Add the correct text decoration in Chrome, Edge, and Safari.
-*/
+.post-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    font-family: 'Times New Roman';
 
-abbr:where([title]) {
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
 }
 
-/*
-Remove the default font size and weight for headings.
-*/
+.left-column {
+    flex: 3;
+    margin-right: 30px;
+    padding: 5px;
+    margin-left: 80px;
+    border: 1px solid #ebebeb; 
+    border-radius: 5px; 
+    background-color: #fff;
+    font-family: 'Times New Roman';
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: inherit;
 }
 
-/*
-Reset links to optimize for opt-in styling instead of opt-out.
-*/
+.right-column {
+    flex: 1;
+    max-width: 400px;
+    padding: 20px;
+    margin-right: 50px;
+    border: 1px solid #ccc9c9; 
+    border-radius: 5px; 
+    background-color: #fff;
+    font-family: 'Times New Roman';
 
-a {
-  color: inherit;
-  text-decoration: inherit;
+}
+.left-column h2 {
+    color: #3ca0e7;
+    margin-bottom: 20px;
+    font-family: 'Times New Roman';
+
+    padding: 0px 30px 0px 30px;
+
 }
 
-/*
-Add the correct font weight in Edge and Safari.
-*/
+.left-column p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    padding: 0px 30px 30px 30px;
+    font-family: 'Times New Roman';
 
-b,
-strong {
-  font-weight: bolder;
+}
+.post-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
-/*
-1. Use the user's configured `mono` font-family by default.
-2. Use the user's configured `mono` font-feature-settings by default.
-3. Use the user's configured `mono` font-variation-settings by default.
-4. Correct the odd `em` font sizing in all browsers.
-*/
+.post-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-family: 'Times New Roman';
 
-code,
-kbd,
-samp,
-pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  /* 1 */
-  font-feature-settings: normal;
-  /* 2 */
-  font-variation-settings: normal;
-  /* 3 */
-  font-size: 1em;
-  /* 4 */
 }
 
-/*
-Add the correct font size in all browsers.
-*/
+.post-body {
+    font-size: 1.2em;
+    line-height: 1.5;
+    font-family: 'Times New Roman';
 
-small {
-  font-size: 80%;
 }
 
-/*
-Prevent `sub` and `sup` elements from affecting the line height in all browsers.
-*/
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+.author-post {
+    margin-bottom: 10px;
 }
 
-sub {
-  bottom: -0.25em;
+.author-post h4 a {
+    color: #007bff;
+    text-decoration: none;
 }
 
-sup {
-  top: -0.5em;
+.author-post h4 a:hover {
+    text-decoration: underline;
 }
 
-/*
-1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
-2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
-3. Remove gaps between table borders by default.
-*/
-
-table {
-  text-indent: 0;
-  /* 1 */
-  border-color: inherit;
-  /* 2 */
-  border-collapse: collapse;
-  /* 3 */
+.comments-section {
+    margin: 20px;
 }
 
-/*
-1. Change the font styles in all browsers.
-2. Remove the margin in Firefox and Safari.
-3. Remove default padding in all browsers.
-*/
+.comment {
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-family: 'Times New Roman';
 
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-  /* 1 */
-  font-feature-settings: inherit;
-  /* 1 */
-  font-variation-settings: inherit;
-  /* 1 */
-  font-size: 100%;
-  /* 1 */
-  font-weight: inherit;
-  /* 1 */
-  line-height: inherit;
-  /* 1 */
-  letter-spacing: inherit;
-  /* 1 */
-  color: inherit;
-  /* 1 */
-  margin: 0;
-  /* 2 */
-  padding: 0;
-  /* 3 */
 }
 
-/*
-Remove the inheritance of text transform in Edge and Firefox.
-*/
+.comment-meta {
+    font-size: 0.9em;
+    color: #888;
+    font-family: 'Times New Roman';
 
-button,
-select {
-  text-transform: none;
 }
 
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Remove default button styles.
-*/
+.comment-body {
+    font-size: 1em;
+    font-family: 'Times New Roman';
 
-button,
-input:where([type='button']),
-input:where([type='reset']),
-input:where([type='submit']) {
-  -webkit-appearance: button;
-  /* 1 */
-  background-color: transparent;
-  /* 2 */
-  background-image: none;
-  /* 2 */
 }
 
-/*
-Use the modern Firefox focus style for all focusable elements.
-*/
+.comment-form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-family: 'Times New Roman';
 
-:-moz-focusring {
-  outline: auto;
+    border-radius: 5px;
 }
 
-/*
-Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
-*/
-
-:-moz-ui-invalid {
-  box-shadow: none;
+.form-group {
+    margin-bottom: 15px;
 }
 
-/*
-Add the correct vertical alignment in Chrome and Firefox.
-*/
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Times New Roman';
 
-progress {
-  vertical-align: baseline;
 }
 
-/*
-Correct the cursor style of increment and decrement buttons in Safari.
-*/
+.form-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Times New Roman';
 
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: auto;
+    cursor: pointer;
 }
 
-/*
-1. Correct the odd appearance in Chrome and Safari.
-2. Correct the outline style in Safari.
-*/
-
-[type='search'] {
-  -webkit-appearance: textfield;
-  /* 1 */
-  outline-offset: -2px;
-  /* 2 */
+.form-button:hover {
+    background-color: #0056b3;
 }
 
-/*
-Remove the inner padding in Chrome and Safari on macOS.
-*/
+.category_search_heading{
 
-::-webkit-search-decoration {
-  -webkit-appearance: none;
+    color: #777;
+    margin: 0 0 20px 50px;    
+    font-size: small;
+    font-family: 'Times New Roman';
+
+}
+.Title {
+    color: #161D6F;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    align-items: center;
+    font-family: 'Times New Roman';
+
 }
 
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Change font properties to `inherit` in Safari.
-*/
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button;
-  /* 1 */
-  font: inherit;
-  /* 2 */
+.category-page .post {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-family: 'Times New Roman';
+    border-radius: 5px;
 }
 
-/*
-Add the correct display in Chrome and Safari.
-*/
-
-summary {
-  display: list-item;
+.category-page .post h3 a {
+    color: #0e31db;
+    text-decoration: none;
 }
 
-/*
-Removes the default spacing and border for appropriate elements.
-*/
-
-blockquote,
-dl,
-dd,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-figure,
-p,
-pre {
-  margin: 0;
+.category-page .post h3 a:hover {
+    text-decoration: underline;
 }
 
-fieldset {
-  margin: 0;
-  padding: 0;
+.category-page small {
+    display: block;
+    margin: 10px 0;
+    font-family: 'Times New Roman';
+    color: #777;
 }
 
-legend {
-  padding: 0;
+.category-page small a {
+    color: #b91bf8;
+    text-decoration: none;
 }
 
-ol,
-ul,
-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.category-page small a:hover {
+    text-decoration: underline;
 }
 
-/*
-Reset default styling for dialogs.
-*/
-
-dialog {
-  padding: 0;
+.card-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/*
-Prevent resizing textareas horizontally by default.
-*/
-
-textarea {
-  resize: vertical;
+.card-hover-effect:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
-/*
-1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-2. Set the default placeholder color to the user's configured gray 400 color.
-*/
-
-input::-moz-placeholder, textarea::-moz-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
+.card-hover-effect .card-img-top {
+    transition: transform 0.3s ease;
 }
 
-input::placeholder,
-textarea::placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
+.card-hover-effect:hover .card-img-top {
+    transform: scale(1.05); 
 }
 
-/*
-Set the default cursor for buttons.
-*/
-
-button,
-[role="button"] {
-  cursor: pointer;
+.card-hover-effect .card-title a {
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Times New Roman';
+    transition: color 0.3s ease;
 }
 
-/*
-Make sure disabled buttons don't get the pointer cursor.
-*/
-
-:disabled {
-  cursor: default;
+.card-hover-effect:hover .card-title a {
+    color: #0e4ac1;
 }
 
-/*
-1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
-2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
-   This can trigger a poorly considered lint error in some tools but is included by design.
-*/
 
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-  display: block;
-  /* 1 */
-  vertical-align: middle;
-  /* 2 */
-}
-
-/*
-Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
-*/
-
-img,
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Make elements with the HTML hidden attribute stay hidden by default */
-
-[hidden] {
-  display: none;
-}
-
-*, ::before, ::after {
-  --tw-border-spacing-x: 0;
-  --tw-border-spacing-y: 0;
-  --tw-translate-x: 0;
-  --tw-translate-y: 0;
-  --tw-rotate: 0;
-  --tw-skew-x: 0;
-  --tw-skew-y: 0;
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
-  --tw-pan-x:  ;
-  --tw-pan-y:  ;
-  --tw-pinch-zoom:  ;
-  --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position:  ;
-  --tw-gradient-via-position:  ;
-  --tw-gradient-to-position:  ;
-  --tw-ordinal:  ;
-  --tw-slashed-zero:  ;
-  --tw-numeric-figure:  ;
-  --tw-numeric-spacing:  ;
-  --tw-numeric-fraction:  ;
-  --tw-ring-inset:  ;
-  --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
-  --tw-ring-color: rgb(59 130 246 / 0.5);
-  --tw-ring-offset-shadow: 0 0 #0000;
-  --tw-ring-shadow: 0 0 #0000;
-  --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  --tw-blur:  ;
-  --tw-brightness:  ;
-  --tw-contrast:  ;
-  --tw-grayscale:  ;
-  --tw-hue-rotate:  ;
-  --tw-invert:  ;
-  --tw-saturate:  ;
-  --tw-sepia:  ;
-  --tw-drop-shadow:  ;
-  --tw-backdrop-blur:  ;
-  --tw-backdrop-brightness:  ;
-  --tw-backdrop-contrast:  ;
-  --tw-backdrop-grayscale:  ;
-  --tw-backdrop-hue-rotate:  ;
-  --tw-backdrop-invert:  ;
-  --tw-backdrop-opacity:  ;
-  --tw-backdrop-saturate:  ;
-  --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
-}
-
-::backdrop {
-  --tw-border-spacing-x: 0;
-  --tw-border-spacing-y: 0;
-  --tw-translate-x: 0;
-  --tw-translate-y: 0;
-  --tw-rotate: 0;
-  --tw-skew-x: 0;
-  --tw-skew-y: 0;
-  --tw-scale-x: 1;
-  --tw-scale-y: 1;
-  --tw-pan-x:  ;
-  --tw-pan-y:  ;
-  --tw-pinch-zoom:  ;
-  --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position:  ;
-  --tw-gradient-via-position:  ;
-  --tw-gradient-to-position:  ;
-  --tw-ordinal:  ;
-  --tw-slashed-zero:  ;
-  --tw-numeric-figure:  ;
-  --tw-numeric-spacing:  ;
-  --tw-numeric-fraction:  ;
-  --tw-ring-inset:  ;
-  --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
-  --tw-ring-color: rgb(59 130 246 / 0.5);
-  --tw-ring-offset-shadow: 0 0 #0000;
-  --tw-ring-shadow: 0 0 #0000;
-  --tw-shadow: 0 0 #0000;
-  --tw-shadow-colored: 0 0 #0000;
-  --tw-blur:  ;
-  --tw-brightness:  ;
-  --tw-contrast:  ;
-  --tw-grayscale:  ;
-  --tw-hue-rotate:  ;
-  --tw-invert:  ;
-  --tw-saturate:  ;
-  --tw-sepia:  ;
-  --tw-drop-shadow:  ;
-  --tw-backdrop-blur:  ;
-  --tw-backdrop-brightness:  ;
-  --tw-backdrop-contrast:  ;
-  --tw-backdrop-grayscale:  ;
-  --tw-backdrop-hue-rotate:  ;
-  --tw-backdrop-invert:  ;
-  --tw-backdrop-opacity:  ;
-  --tw-backdrop-saturate:  ;
-  --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
-}
-
-.visible {
-  visibility: visible;
-}
-
-.collapse {
-  visibility: collapse;
-}
-
-.relative {
-  position: relative;
-}
-
-.block {
-  display: block;
-}
-
-.table {
-  display: table;
-}
-
-.contents {
-  display: contents;
-}
-
-.hidden {
-  display: none;
-}
-
-.border-collapse {
-  border-collapse: collapse;
-}
-
-.transform {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.resize {
-  resize: both;
-}
-
-.border {
-  border-width: 1px;
-}
-
-.underline {
-  text-decoration-line: underline;
-}
-
-.outline {
-  outline-style: solid;
-}
+.footer-basic {
+    padding:40px 0;
+    background-color:rgb(242, 242, 242);
+    color:#324c66;
+  }
+  
+  .footer-basic ul {
+    padding:0;
+    list-style:none;
+    text-align:center;
+    font-size:18px;
+    line-height:1.6;
+    font-family: 'Times New Roman';
+    margin-bottom:0;
+  }
+  
+  .footer-basic li {
+    padding:0 10px;
+  }
+  
+  .footer-basic ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.8;
+  }
+  
+  .footer-basic ul a:hover {
+    opacity:1;
+  }
+  
+  .footer-basic .social {
+    text-align:center;
+    padding-bottom:25px;
+  }
+  
+  .footer-basic .social > a {
+    font-size:24px;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    border:1px solid #cccccc;
+    margin:0 8px;
+    color:inherit;
+    opacity:0.75;
+  }
+  
+  .footer-basic .social > a:hover {
+    opacity:0.9;
+  }
+  
+  .footer-basic .copyright {
+    margin-top:15px;
+    text-align:center;
+    font-size:13px;
+    color:#4e5b75;
+    margin-bottom:0;
+  }
