@@ -259,9 +259,8 @@
     </div>
     <!-- Banner-1 End -->
 
-
-
-    <!-- Categories Start -->
+    
+    <!-- Categories startt -->
     <div class="container-xxl py-5 category">
         <div class="container">
             <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -269,89 +268,23 @@
                 <h1 class="mb-5" style="color: #fb873f;">Popular Topics to Explore</h1>
             </div>
             <div class="row g-2 m-2">
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'img/cat1.png' %}" class="img-fluid" alt="categories"></i>
-
-                        <h5 class="my-2">
-                            <a href="#" class="text-center">Microsoft Excel</a>
-                        </h5>
+                {% for category in categories %}
+                    <div class="col-lg-3 col-md-6 text-center">
+                        <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
+                            <img src="{{ category.image.url }}" class="img-fluid" alt="categories">
+                            <h5 class="my-2">
+                                <a href="#" class="text-center">{{ category.name }}</a>
+                            </h5>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'img/cat2.png' %}" class="img-fluid" alt="categories"></i>
-
-                        <h5 class="my-2">
-                            <a href="#" class="text-center"> AWS</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'img/cat3.png' %}" class="img-fluid" alt="categories"></i>
-
-                        <h5 class="my-2">
-                            <a href="#" class="text-center">Python</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'img/cat4.png' %}" class="img-fluid" alt="categories"></i>
-
-                        <h5 class="my-2">
-                            <a href="#" class="text-center">Java</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'img/cat5.png' %}" class="img-fluid" alt="categories"></i>
-
-                        <h5 class="my-2">
-                            <a href="#" class="text-center">Web Design</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'img/cat6.png' %}" class="img-fluid" alt="categories"></i>
-
-                        <h5 class="my-2">
-                            <a href="#" class="text-center">Web Development</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'img/cat7.png' %}" class="img-fluid" alt="categories"></i>
-
-                        <h5 class="my-2">
-                            <a href="#" class="text-center">MySQL</a>
-                        </h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6  text-center">
-                    <div class="content shadow p-3 mb-2 wow fadeInUp" data-wow-delay="0.3s">
-
-                        <img src="{% static 'img/cat8.png' %}" class="img-fluid" alt="categories"></i>
-
-                        <h5 class="my-2">
-                            <a href="#" class="text-center">UI/UX Design</a>
-                        </h5>
-                    </div>
-                </div>
+                {% empty %}
+                    <p>No categories available.</p>
+                {% endfor %}
             </div>
         </div>
     </div>
+    
+
     <!-- Categories End -->
 
 

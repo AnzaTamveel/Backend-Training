@@ -1,0 +1,5 @@
+{% autoescape off %}
+<p>Hello {{ user.username }},</p>
+<p>Thank you for registering. Please click the link below to activate your account:</p>
+<a href="http://127.0.0.1:8000{% url 'activate' uidb64=uid token=token %}">Activate your account</a>
+{% endautoescape %}

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import activate_user
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -13,5 +14,6 @@ urlpatterns = [
     path('team/', views.team, name='team'),
     path('testimonial/', views.testimonial, name='testimonial'),
     path('search/', views.search, name='search'),
+    path('activate/<str:uidb64>/<str:token>/', activate_user, name='activate'),
 
 ]
