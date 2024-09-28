@@ -37,8 +37,8 @@ def send_activation_email(request, user):
 def activate_user(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except (DjangoUnicodeDecodeError, User.DoesNotExist):
+        user = CustomUser.objects.get(pk=uid)
+    except (DjangoUnicodeDecodeError, CustomUser.DoesNotExist):
         user = None
     
     if user is not None and generate_token.check_token(user, token):
@@ -62,16 +62,16 @@ def signup(request):
             messages.error(request, "All fields are required.")
             return render(request, 'signup.html')
 
-        if User.objects.filter(username=username).exists():
+        if CustomUser.objects.filter(username=username).exists():
             messages.error(request, "Username already exists.")
             return render(request, 'signup.html')
 
-        if User.objects.filter(email=email).exists():
+        if CustomUser.objects.filter(email=email).exists():
             messages.error(request, "Email already exists.")
             return render(request, 'signup.html')
 
         # Create the user
-        user = User.objects.create_user(username=username, email=email, password=password)
+        user = CustomUser.objects.create_user(username=username, email=email, password=password)
         user.save()
 
         # Send activation email
