@@ -122,7 +122,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="{% url 'img/instructor-1.jpg' %}" alt=""
+                        <img class="img-fluid position-absolute w-100 h-100" src="{% static 'img/instructor-1.jpg' %}" alt=""
                             style="object-fit: cover;">
                     </div>
                 </div>
@@ -214,7 +214,7 @@
 
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="{% url 'img/instructor-2.jpg' %}" alt=""
+                        <img class="img-fluid position-absolute w-100 h-100" src="{% static 'img/instructor-2.jpg' %}" alt=""
                             style="object-fit: cover;">
                     </div>
                 </div>
@@ -227,7 +227,7 @@
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="{% url 'img/ready.jpg' %}" alt="">
+                    <img class="img-fluid" src="{% static 'img/ready.jpg' %}" alt="">
                 </div>
                
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -374,8 +374,8 @@
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6">
                     <h4 class="text-white mb-3">Quick Link</h4>
-                    <p><a class="text-light" href="about.html">About Us</a></p>
-                    <p><a class="text-light" href="contact.html">Contact Us</a></p>
+                    <p><a class="text-light" href="{% url 'about' %}">About Us</a></p>
+                    <p><a class="text-light" href="{% url 'contact' %}">Contact Us</a></p>
                     <p><a class="text-light" href="">Privacy Policy</a></p>
                     <p><a class="text-light" href="">Terms & Condition</a></p>
                     <p><a class="text-light" href="">FAQs & Help</a></p>
@@ -412,7 +412,7 @@
             <div class="copyright">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="index.html">Secret Coder</a>, All Right Reserved.
+                        &copy; <a class="border-bottom" href="{% url 'index' %}">Secret Coder</a>, All Right Reserved.
 
                     </div>
                 </div>

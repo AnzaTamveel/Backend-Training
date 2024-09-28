@@ -98,63 +98,47 @@
         </div>
     </div>
     <!-- Header End -->
-
-
-
-    <!-- Team Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden text-center pt-5">
-                            <img class="img-fluid" src="{% static 'img/team-1.png' %}" alt="" style="height: 500px; width: 300px;">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a target="_blank" class="btn btn-sm-square btn-primary mx-1"
-                                    href="https://www.linkedin.com/in/ajay-panwar-8077b925a/"><i
-                                        class="fab fa-linkedin"></i></a>
-                                <a target="_blank" class="btn btn-sm-square btn-primary mx-1"
-                                    href="mailto:ajaypanwar7472@gmail.com"><i class="fa fa-envelope"></i></a>
-                                <a target="_blank" class="btn btn-sm-square btn-primary mx-1"
-                                    href="https://github.com/ajaypanwar7472"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Ajay Kumar</h5>
-                            <small>Team Leader</small>
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for member in team_members %}
+            <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item bg-light">
+                    <div class="overflow-hidden text-center pt-5">
+                        <img class="img-fluid" src="{{ member.image.url }}" alt="" style="height: 500px; width: 300px;">
+                    </div>
+                    <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
+                        <div class="bg-light d-flex justify-content-center pt-2 px-1">
+                            {% if member.linkedin %}
+                            <a target="_blank" class="btn btn-sm-square btn-primary mx-1" href="{{ member.linkedin }}">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            {% endif %}
+                            {% if member.email %}
+                            <a target="_blank" class="btn btn-sm-square btn-primary mx-1" href="mailto:{{ member.email }}">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                            {% endif %}
+                            {% if member.github %}
+                            <a target="_blank" class="btn btn-sm-square btn-primary mx-1" href="{{ member.github }}">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden text-center pt-5">
-                            <img class="img-fluid" src="{% static 'img/team-2.png' %}" alt="" style="height: 500px; width: 300px;">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a target="_blank" class="btn btn-sm-square btn-primary mx-1"
-                                    href="https://www.linkedin.com/in/keerti-vishwkarma-8ba754243/"><i
-                                        class="fab fa-linkedin"></i></a>
-                                <a target="_blank" class="btn btn-sm-square btn-primary mx-1"
-                                    href="mailto:keertidvcorai@gmail.com"><i class="fa fa-envelope"></i></a>
-                                <a target="_blank" class="btn btn-sm-square btn-primary mx-1"
-                                    href="https://github.com/keerti1924"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Keerti Vishwkarma</h5>
-                            <small>Team Member</small>
-                        </div>
+                    <div class="text-center p-4">
+                        <h5 class="mb-0">{{ member.name }}</h5>
+                        <small>{{ member.role }}</small>
                     </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
-    <!-- Team End -->
-
-
+</div>
+<!-- Team End -->
+ 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">

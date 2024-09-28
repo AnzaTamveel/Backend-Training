@@ -1,7 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 
+class TeamMember(models.Model):
+    name = models.CharField(max_length=100)
+    role = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='team/')
+    linkedin = models.URLField(blank=True)
+    email = models.EmailField(blank=True)
+    github = models.URLField(blank=True)
 
+    def __str__(self):
+        return self.name
+    
 class CustomUser(AbstractUser):
     is_email_validated = models.BooleanField(default=False)
 
@@ -23,6 +33,7 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+
 
 class Category(models.Model):
     name = models.CharField(max_length=255)

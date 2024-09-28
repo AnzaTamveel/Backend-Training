@@ -14,7 +14,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from .utils import generate_token
 from django.core.mail import EmailMessage
-from .models import CustomUser , Category
+from .models import CustomUser , Category , TeamMember
 
 def send_activation_email(request, user):
     current_site = get_current_site(request)
@@ -121,6 +121,10 @@ def courses(request):
         'categories': categories,
     })
 
+def team(request):
+    team_members = TeamMember.objects.all()
+    return render(request, 'team.html', {'team_members': team_members})
+
 def instructor(request):
     instructors = Instructor.objects.all()
     return render(request, 'instructor.html', {'instructors': instructors})
@@ -163,7 +167,4 @@ def logout(request):
 def single(request):
     return render(request, 'single.html')
 
-
-def team(request):
-    return render(request, 'team.html')
 
